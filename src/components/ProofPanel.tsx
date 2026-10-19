@@ -574,8 +574,8 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
           >
             <span className="truncate">
               {row.checked && !row.needs_check
-                ? "✓ Checked — review flags resolved"
-                : `To check: ${row.all_flags.map((f) => f.note).join(" · ")}`}
+                ? t("✓ Checked — review flags resolved")
+                : `${t("To check")}: ${row.all_flags.map((f) => t(f.note)).join(" · ")}`}
             </span>
 
             <div className="flex flex-wrap items-center gap-4 shrink-0">
@@ -895,8 +895,7 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
             }}
           >
             <div className="flex items-center justify-between gap-2">
-              <span className="text-[#006EFF]/80">
-                Tax {row.tax_label ? `(${row.tax_label})` : ""}
+              <span className="text-[#006EFF]/80">{t("Tax")}{" "}{row.tax_label ? `(${row.tax_label})` : ""}
               </span>
               <input
                 type="number"
@@ -1003,14 +1002,9 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
             transition: "opacity 250ms var(--ease-out) 160ms",
           }}
         >
-          <span>
-            Calculated in code · {relevantConfidence.label} read at{" "}
-            {relevantConfidence.pct}% confidence
+          <span>{t("Calculated in code · {field} read at {pct}% confidence", {field: t(relevantConfidence.label), pct: relevantConfidence.pct})}
             {row.converted_main_total !== null
-              ? ` · converted: ${formatCurrencyAmount(
-                  row.converted_main_total,
-                  mainCurrency
-                )} (${row.user_conversion_date})`
+              ? t(" · converted: {amount} ({date})", {amount: formatCurrencyAmount(row.converted_main_total, mainCurrency), date: row.user_conversion_date ?? ""})
               : ""}
           </span>
 
@@ -1026,7 +1020,7 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
                 }
                 className="shoebox-link text-[16px]"
               >
-                {row.checked ? "✓ checked" : t("mark checked")}
+                {row.checked ? t("✓ checked") : t("mark checked")}
               </button>
             )}
 

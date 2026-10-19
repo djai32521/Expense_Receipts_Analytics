@@ -569,13 +569,9 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
           <div className="min-w-0">
             <div className="flex items-center gap-2.5">
               <span className="font-mono-badge px-2 py-0.5 bg-white text-[#006EFF]">{t("GOOGLE WORKSPACE")}</span>
-              <span className="font-mono-badge text-white/80">
-                DRIVE &amp; GMAIL OAUTH 2.0
-              </span>
+              <span className="font-mono-badge text-white/80">{t("DRIVE & GMAIL OAUTH 2.0")}{" "}</span>
             </div>
-            <h2 className="m-0 mt-2 text-[28px] md:text-[34px] tracking-[-0.02em] leading-[0.95]">
-              Sync Drive &amp; Gmail Receipts
-            </h2>
+            <h2 className="m-0 mt-2 text-[28px] md:text-[34px] tracking-[-0.02em] leading-[0.95]">{t("Sync Drive & Gmail Receipts")}{" "}</h2>
             <p className="m-0 mt-1.5 text-[14.5px] text-white/85 leading-[1.35]">{t("Pull receipt photos from a shared Drive folder or billing emails from Gmail directly into the Shoebox audit engine.")}</p>
           </div>
 
@@ -594,9 +590,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono-badge px-1.5 py-0.5 bg-[#006EFF] text-white">{t("STEP 01")}</span>
-                <h3 className="m-0 text-[19px] tracking-[-0.01em]">
-                  Google Account &amp; Scope Selection
-                </h3>
+                <h3 className="m-0 text-[19px] tracking-[-0.01em]">{t("Google Account & Scope Selection")}{" "}</h3>
               </div>
             </div>
 
@@ -633,9 +627,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                     </span>
                     <span className="text-[15.5px]">{t("Google Drive Folder")}</span>
                   </div>
-                  <p className="m-0 mt-1 text-[12.5px] text-[#006EFF]/75 leading-snug">
-                    Scan receipt images &amp; PDFs inside any Drive folder.
-                  </p>
+                  <p className="m-0 mt-1 text-[12.5px] text-[#006EFF]/75 leading-snug">{t("Scan receipt images & PDFs inside any Drive folder.")}{" "}</p>
                 </div>
               </div>
 
@@ -668,14 +660,9 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                     <span className="font-mono-badge px-1.5 py-0.5 bg-[#BEDBFF] text-[#006EFF]">
                       GMAIL
                     </span>
-                    <span className="text-[15.5px]">
-                      Gmail Receipts &amp; Invoices
-                    </span>
+                    <span className="text-[15.5px]">{t("Gmail Receipts & Invoices")}{" "}</span>
                   </div>
-                  <p className="m-0 mt-1 text-[12.5px] text-[#006EFF]/75 leading-snug">
-                    Optional — pull receipt attachments &amp; HTML billing
-                    emails.
-                  </p>
+                  <p className="m-0 mt-1 text-[12.5px] text-[#006EFF]/75 leading-snug">{t("Optional — pull receipt attachments & HTML billing emails.")}{" "}</p>
                 </div>
               </div>
             </div>
@@ -772,9 +759,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
           <section className="p-6 bg-white flex flex-col gap-5">
             <div className="flex items-center gap-2.5">
               <span className="font-mono-badge px-1.5 py-0.5 bg-[#006EFF] text-white">{t("STEP 02")}</span>
-              <h3 className="m-0 text-[19px] tracking-[-0.01em]">
-                Source Filters &amp; Cost Center Tagging
-              </h3>
+              <h3 className="m-0 text-[19px] tracking-[-0.01em]">{t("Source Filters & Cost Center Tagging")}{" "}</h3>
             </div>
 
             {/* GOOGLE DRIVE CONTROLS */}
@@ -1061,9 +1046,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono-badge px-1.5 py-0.5 bg-[#006EFF] text-white">{t("STEP 03")}</span>
-                <h3 className="m-0 text-[19px] tracking-[-0.01em]">
-                  Live Discovery &amp; Batch Audit Ingestion
-                </h3>
+                <h3 className="m-0 text-[19px] tracking-[-0.01em]">{t("Live Discovery & Batch Audit Ingestion")}{" "}</h3>
               </div>
 
               <button
@@ -1095,8 +1078,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
             {hasScannedOnce && !isScanning && (
               <div className="flex flex-col gap-2.5">
                 <div className="flex items-center justify-between gap-2 text-[13.5px]">
-                  <span className="tabular-nums">
-                    Found{" "}
+                  <span className="tabular-nums">{t("Found")}{" "}
                     <strong>
                       <RollingNumber value={discoveredItems.length} />
                     </strong>{" "}
@@ -1202,9 +1184,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
           {isDownloading && downloadProgress && (
             <div className="flex flex-col gap-1">
               <div className="flex items-center justify-between text-[13px] tabular-nums">
-                <span className="truncate pr-2">
-                  Downloading {downloadProgress.completed} of{" "}
-                  {downloadProgress.total} ({downloadProgress.currentTitle})…
+                <span className="truncate pr-2">{t("Downloading {done} of {count} ({name})…", {done: downloadProgress.completed, count: downloadProgress.total, name: downloadProgress.currentTitle})}
                 </span>
                 <span className="font-mono-badge">{downloadPct}%</span>
               </div>
@@ -1235,13 +1215,10 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
               className="shoebox-link text-[20px] md:text-[22px] text-[#006EFF] disabled:opacity-40 shrink-0"
             >
               {isDownloading ? (
-                <span>
-                  ingesting {downloadProgress?.completed ?? 0} of{" "}
-                  {selectedItems.length}…
+                <span>{t("ingesting {done} of {count}…", {done: downloadProgress?.completed ?? 0, count: selectedItems.length})}
                 </span>
               ) : (
-                <span>
-                  ingest &amp; audit{" "}
+                <span>{t("ingest & audit")}{" "}
                   <RollingNumber value={selectedItems.length} />{" "}
                   {selectedItems.length === 1 ? t("file") : t("files")} →
                 </span>

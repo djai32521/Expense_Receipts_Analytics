@@ -814,7 +814,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                           void handleApplyFolderInput();
                         }
                       }}
-                      placeholder="https://drive.google.com/drive/folders/1a2b3c... or Folder ID"
+                      placeholder={t("https://drive.google.com/drive/folders/1a2b3c... or Folder ID")}
                       className="flex-1 bg-white text-[#006EFF] px-3 py-1.5 text-[14px] border border-[#006EFF] outline-none"
                     />
                     <button
@@ -838,7 +838,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                       type="text"
                       value={folderSearch}
                       onChange={(e) => setFolderSearch(e.target.value)}
-                      placeholder="Search folders (e.g. Shoebox Test Receipts)…"
+                      placeholder={t("Search folders (e.g. Shoebox Test Receipts)…")}
                       className="w-56 sm:w-64 bg-white text-[#006EFF] px-2.5 py-1 text-[13px] border border-[#006EFF]/50 focus:border-[#006EFF] outline-none"
                     />
                   </div>
@@ -906,7 +906,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                             : "bg-white text-[#006EFF] hover:bg-[#BEDBFF]"
                         }`}
                       >
-                        {limit} FILES
+                        {limit}{" "}{t("FILES")}
                       </button>
                     ))}
                   </div>
@@ -956,8 +956,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                     {includeGmailHtml && "✓"}
                   </span>
                   <span>
-                    Also rasterize HTML email body receipts (e.g. Uber, Lyft,
-                    airline e-receipts without image attachments)
+                    {t("Also rasterize HTML email body receipts (e.g. Uber, Lyft, airline e-receipts without image attachments)")}
                   </span>
                 </div>
               </div>
@@ -967,7 +966,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="font-mono-badge text-[#006EFF]">
-                  DATE RANGE FILTER (DRIVE &amp; GMAIL)
+                  {t("DATE RANGE FILTER (DRIVE & GMAIL)")}
                 </span>
                 <div className="flex flex-wrap items-center gap-1.5">
                   {(
@@ -989,7 +988,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
                           : "bg-white text-[#006EFF] hover:bg-[#BEDBFF]"
                       }`}
                     >
-                      {p.label}
+                      {t(p.label)}
                     </button>
                   ))}
                 </div>
@@ -1200,7 +1199,7 @@ export const WorkspaceSyncModal: React.FC<WorkspaceSyncModalProps> = ({
           <div className="flex items-center justify-between gap-4">
             <div className="flex flex-col min-w-0 gap-0.5">
               <div className="text-[13.5px] text-[#006EFF] truncate">
-                Cost center:{" "}
+                {t("Cost Center")}:{" "}
                 <span className="font-mono-badge px-1.5 py-0.5 bg-white text-[#006EFF]">
                   {defaultCostCenter}
                 </span>

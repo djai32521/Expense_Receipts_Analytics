@@ -182,9 +182,35 @@ export const translations: Record<string, string> = {
   "{count} missing tax ID · ": "사업자번호 누락 {count}건 · ",
   "No matching receipt images or billing emails found for the current folder / date filter. Try selecting": "현재 폴더와 기간에 맞는 영수증 이미지나 청구 메일이 없습니다. 다음 기간을 선택하거나",
   "✓ checked": "✓ 검토 완료",
+  "We couldn't detect any physical receipts in the uploaded photos. Try uploading a clearer photo.": "업로드한 사진에서 영수증을 찾지 못했습니다. 더 선명한 사진으로 다시 시도하세요.",
+  "DRIVE & GMAIL OAUTH 2.0": "DRIVE · GMAIL OAUTH 2.0",
+  "Sync Drive & Gmail Receipts": "Drive · Gmail 영수증 가져오기",
+  "Google Account & Scope Selection": "Google 계정과 접근 권한 선택",
+  "Scan receipt images & PDFs inside any Drive folder.": "Drive 폴더에서 영수증 이미지와 PDF를 검색합니다.",
+  "Gmail Receipts & Invoices": "Gmail 영수증과 청구서",
+  "Optional — pull receipt attachments & HTML billing emails.": "선택 사항: 영수증 첨부파일과 HTML 청구 메일을 가져옵니다.",
+  "Source Filters & Cost Center Tagging": "출처 필터와 비용센터 지정",
+  "Live Discovery & Batch Audit Ingestion": "실시간 검색과 일괄 가져오기",
+  "Found": "검색 결과", "Downloading": "다운로드 중", "ingesting": "가져오는 중", "ingest & audit": "가져와서 검증",
+  "Missing tax invoice": "세금 증빙 확인 필요", "MISSING TAX ID": "사업자번호 누락",
+  "missing tax ID": "사업자번호 누락", "Tax ID missing": "사업자번호 누락",
+  "Tip mismatch": "팁 합계 불일치", "Low confidence": "인식 신뢰도 낮음",
+  "Currency missing": "통화 누락", "Unreadable amount": "금액 확인 불가",
+  "Final total": "최종 금액", "merchant": "상호", "date": "날짜", "printed total": "인쇄된 합계", "handwritten tip": "손글씨 팁",
+  "Calculated in code ·": "코드로 계산 ·",
+  " · converted: {amount} ({date})": " · 환산: {amount} ({date})",
+  "Downloading {done} of {count} ({name})…": "{count}개 중 {done}개 다운로드 중 ({name})…",
+  "✓ Checked — review flags resolved": "✓ 검토 완료 — 확인 항목 해결됨",
+  "ingesting {done} of {count}…": "{count}개 중 {done}개 가져오는 중…",
 };
 
 export function t(text: string, values: Record<string, string | number> = {}): string {
-  const translated = language === "ko" ? translations[text] ?? text : text;
+  let translated = language === "ko" ? translations[text] ?? text : text;
+  if (language === "ko" && translated === text) {
+    translated = text
+      .replace(/^possible duplicate of #(\d+)$/i, "$1번 행과 중복 가능성")
+      .replace(/^Same merchant, date,? and total as (?:row )?#(\d+)$/i, "$1번 행과 상호·날짜·금액 일치")
+      .replace(/^Cross-source duplicate of #(\d+)$/i, "$1번 행과 출처 간 중복");
+  }
   return translated.replace(/\{(\w+)\}/g, (match, key: string) => String(values[key] ?? match));
 }

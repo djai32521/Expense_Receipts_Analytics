@@ -853,7 +853,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                 r.merchant
                   ? r.merchant
                   : null,
-                r.checked ? "✓ checked" : r.primary_flag_label,
+                r.checked ? t("✓ checked") : r.primary_flag_label ? t(r.primary_flag_label) : null,
                 r.converted_main_total !== null
                   ? `converted ${formatCurrencyAmount(
                       r.converted_main_total,
@@ -1045,8 +1045,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                 )}
                 {failedBatches.length > 0 && readingPhase === "idle" && (
                   <div className="flex flex-wrap items-center justify-between gap-2 text-[12.5px] text-white bg-white/15 px-2 py-1">
-                    <span>
-                      Couldn&apos;t read photos{" "}
+                    <span>{t("Couldn't read photos")}{" "}
                       {failedBatches
                         .map((b) =>
                           b.startPhotoIndex === b.endPhotoIndex
@@ -1149,7 +1148,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                           activeOpenTile.totalAmount,
                           activeOpenTile.currency
                         )}{" "}
-                        · kept in {activeOpenTile.currency} · not in % of spend
+                        {" · "}{t("kept in {currency}", {currency: activeOpenTile.currency})}{t(" · not in % of spend")}
                       </span>
                     ) : (
                       <span className="truncate">
@@ -1161,14 +1160,14 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                               : Number(activeOpenTile.sharePercent.toFixed(1))
                           }
                           startFromZero={true}
-                        />{t("% of spend")}</span>
+                        />{" "}{t("% of spend")}</span>
                     )}
                     {activeOpenTile.id !== FLAG_CHECK_TILE_ID &&
                       activeOpenTile.flaggedCount > 0 &&
                       groupingMode === "tile" && (
                         <span className="truncate">
                           <RollingNumber value={activeOpenTile.flaggedCount} />{" "}
-                          to check
+                          {t("to check")}
                         </span>
                       )}
                   </div>
@@ -1188,7 +1187,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                 {/* B2B audit summary line when missing tax ID flags exist */}
                 {hasB2BProvenanceOrFlags && (
                   <div className="mt-2 font-mono-badge text-white/85 truncate">
-                    {`${reconciliation.missingTaxInvoiceCount} missing tax ID`}
+                    {reconciliation.missingTaxInvoiceCount}{" "}{t("missing tax ID")}
                   </div>
                 )}
 
@@ -1271,7 +1270,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                                   {isCollapsed ? "▸" : "▾"}
                                 </span>
                                 <span className="font-mono-badge px-1.5 py-0.5 bg-white text-[#006EFF] truncate">
-                                  {sec.title}
+                                  {t(sec.title)}
                                 </span>
                                 <span className="text-[13px] text-white/85 tabular-nums">
                                   ({sec.receipts.length})
@@ -1369,10 +1368,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                   className="m-0 tracking-[-0.02em] leading-[0.94]"
                   style={{ fontSize: "clamp(32px, 4.5vw, 68px)" }}
                 >{t("No receipts found")}</h2>
-                <p className="m-0 mt-3 text-[19px] text-white/90">
-                  We couldn&apos;t detect any physical receipts in the uploaded
-                  photos. Try uploading a clearer photo.
-                </p>
+                <p className="m-0 mt-3 text-[19px] text-white/90">{t("We couldn't detect any physical receipts in the uploaded photos. Try uploading a clearer photo.")}{" "}</p>
               </div>
               <button
                 type="button"
@@ -1478,9 +1474,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
                 <span>{t("reconciles")}</span>
               </span>
             ) : (
-              <span>
-                ⚠ Totals don&apos;t reconcile
-                {reconciliation.failureReason
+              <span>{t("⚠ Totals don't reconcile")}{" "}{reconciliation.failureReason
                   ? ` (${reconciliation.failureReason})`
                   : ""}
               </span>
@@ -1502,7 +1496,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
           <p className="m-0 mt-0.5 text-[11px] lg:text-[11.5px] text-[#006EFF]/75 leading-tight truncate hidden sm:block">
             {hasB2BProvenanceOrFlags ? (
               <span className="font-mono-badge mr-2">
-                {`${reconciliation.missingTaxInvoiceCount} missing tax ID · `}
+                {t("{count} missing tax ID · ", {count: reconciliation.missingTaxInvoiceCount})}
               </span>
             ) : null}
             <span>{t("Categories are suggestions, not tax advice. Currencies kept as printed.")}</span>
@@ -1524,7 +1518,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
             onClick={() => handleViewAllTile(FLAG_CHECK_TILE_ID)}
             className="shoebox-link tabular-nums"
           >
-            <RollingNumber value={reconciliation.toCheckCount} />{t("to check")}</button>
+            <RollingNumber value={reconciliation.toCheckCount} />{" "}{t("to check")}</button>
 
           <button
             type="button"
@@ -1696,8 +1690,7 @@ const TreemapTileItem: React.FC<TreemapTileItemProps> = ({
 
             {tile.isForeign ? (
               <span className="truncate">
-                {formatCurrencyAmount(tile.totalAmount, tile.currency)} · kept
-                in {tile.currency}
+                {formatCurrencyAmount(tile.totalAmount, tile.currency)}{" · "}{t("kept in {currency}", {currency: tile.currency})}
                 {isTopRowLarge || tile.w >= 0.45 ? " · not in % of spend" : ""}
               </span>
             ) : (
@@ -1709,12 +1702,12 @@ const TreemapTileItem: React.FC<TreemapTileItemProps> = ({
                       : Number(tile.sharePercent.toFixed(1))
                   }
                   startFromZero={true}
-                />{t("% of spend")}</span>
+                />{" "}{t("% of spend")}</span>
             )}
 
             {tile.flaggedCount > 0 && (
               <span className="truncate">
-                <RollingNumber value={tile.flaggedCount} />{t("to check")}</span>
+                <RollingNumber value={tile.flaggedCount} />{" "}{t("to check")}</span>
             )}
           </div>
 

@@ -633,12 +633,12 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
           ...merchantTiles
             .slice(0, 8)
             .map(
-              (t) =>
-                `- ${t.name}: ${formatCurrencyAmount(
-                  t.totalAmount,
-                  t.currency
-                )} (${t.receipts.length} ${
-                  t.receipts.length === 1 ? t("receipt") : t("receipts")
+              (tile) =>
+                `- ${tile.name}: ${formatCurrencyAmount(
+                  tile.totalAmount,
+                  tile.currency
+                )} (${tile.receipts.length} ${
+                  tile.receipts.length === 1 ? t("receipt") : t("receipts")
                 })`
             ),
           ``,

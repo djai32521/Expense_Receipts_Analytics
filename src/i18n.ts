@@ -201,6 +201,11 @@ export const translations: Record<string, string> = {
   " · converted: {amount} ({date})": " · 환산: {amount} ({date})",
   "Downloading {done} of {count} ({name})…": "{count}개 중 {done}개 다운로드 중 ({name})…",
   "✓ Checked — review flags resolved": "✓ 검토 완료 — 확인 항목 해결됨",
+  "https://drive.google.com/drive/folders/1a2b3c... or Folder ID": "Drive 폴더 URL 또는 폴더 ID",
+  "Search folders (e.g. Shoebox Test Receipts)…": "폴더 검색 (예: 영수증 폴더)…",
+  "Also rasterize HTML email body receipts (e.g. Uber, Lyft, airline e-receipts without image attachments)": "HTML 메일 본문의 영수증도 이미지로 변환 (예: 이미지 첨부 없는 차량 호출·항공 영수증)",
+  "DATE RANGE FILTER (DRIVE & GMAIL)": "검색 기간 (DRIVE · GMAIL)",
+  "FILES": "개 파일", "None": "없음", "printed": "인쇄된 금액", "Rate": "환율",
   "ingesting {done} of {count}…": "{count}개 중 {done}개 가져오는 중…",
 };
 

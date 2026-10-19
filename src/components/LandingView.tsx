@@ -584,12 +584,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
               }}
             >
               <div className="mb-2 flex flex-col gap-1.5 text-[#006EFF]/85 text-[11px] lg:text-[11.5px] leading-[1.35]">
-                <p className="m-0">
-                  By using this feature, you confirm that you have the necessary
-                  rights to any content that you upload. Do not generate content
-                  that infringes on others’ intellectual property or privacy
-                  rights. Your use of this generative AI service is subject to
-                  our{" "}
+                <p className="m-0">{t("By using this feature, you confirm that you have the necessary rights to any content that you upload. Do not generate content that infringes on others’ intellectual property or privacy rights. Your use of this generative AI service is subject to our")}{" "}
                   <a
                     href="https://policies.google.com/terms/generative-ai/use-policy"
                     target="_blank"

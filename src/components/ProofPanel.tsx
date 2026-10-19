@@ -719,7 +719,7 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
             <input
               type="text"
               value={row.tax_id_or_vat ?? ""}
-              placeholder="None"
+              placeholder={t("None")}
               onChange={(e) =>
                 onUpdateRow(row.row, (prev) => ({
                   ...prev,
@@ -868,7 +868,7 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
                   type="number"
                   step="0.01"
                   value={row.final_total ?? ""}
-                  placeholder="printed"
+                  placeholder={t("printed")}
                   title={t("Receipt printed/written final total")}
                   onChange={(e) => {
                     const val =
@@ -960,7 +960,7 @@ export const ProofPanel: React.FC<ProofPanelProps> = ({
                   <input
                     type="number"
                     step="0.0001"
-                    placeholder="Rate"
+                    placeholder={t("Rate")}
                     value={row.user_conversion_rate ?? ""}
                     onChange={(e) => {
                       const val =

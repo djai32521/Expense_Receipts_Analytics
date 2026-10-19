@@ -181,7 +181,7 @@ export const translations: Record<string, string> = {
   "kept in {currency}": "{currency} 통화 유지",
   "{count} missing tax ID · ": "사업자번호 누락 {count}건 · ",
   "No matching receipt images or billing emails found for the current folder / date filter. Try selecting": "현재 폴더와 기간에 맞는 영수증 이미지나 청구 메일이 없습니다. 다음 기간을 선택하거나",
-  "✓ checked": "✓ 검토 완료", "include in totals": "합계에 포함",
+  "✓ checked": "✓ 검토 완료",
 };
 
 export function t(text: string, values: Record<string, string | number> = {}): string {

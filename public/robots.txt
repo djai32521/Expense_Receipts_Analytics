@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://djai32521.github.io/Expense_Receipts_Analytics/sitemap.xml
